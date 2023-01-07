@@ -1,0 +1,99 @@
+
+/* dancing-script-regular - latin-ext_latin */
+@font-face {
+    font-family: 'Dancing Script';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('../../fonts/dancing-script-v24-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../../fonts/dancing-script-v24-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+  /* dancing-script-500 - latin-ext_latin */
+  @font-face {
+    font-family: 'Dancing Script';
+    font-style: normal;
+    font-weight: 500;
+    src: local(''),
+         url('../../fonts/dancing-script-v24-latin-ext_latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../../fonts/dancing-script-v24-latin-ext_latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+  /* dancing-script-600 - latin-ext_latin */
+  @font-face {
+    font-family: 'Dancing Script';
+    font-style: normal;
+    font-weight: 600;
+    src: local(''),
+         url('../../fonts/dancing-script-v24-latin-ext_latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../../fonts/dancing-script-v24-latin-ext_latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+  /* dancing-script-700 - latin-ext_latin */
+  @font-face {
+    font-family: 'Dancing Script';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''),
+         url('../../fonts/dancing-script-v24-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../../fonts/dancing-script-v24-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+  /* special-elite-regular - latin */
+@font-face {
+    font-family: 'Special Elite';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('../../fonts/special-elite-v18-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../../fonts/special-elite-v18-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+
+  /* tai-heritage-pro-regular - latin */
+@font-face {
+    font-family: 'Tai Heritage Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('../../fonts/tai-heritage-pro-v2-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../../fonts/tai-heritage-pro-v2-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+  /* tai-heritage-pro-700 - latin */
+  @font-face {
+    font-family: 'Tai Heritage Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''),
+         url('../../fonts/tai-heritage-pro-v2-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../../fonts/tai-heritage-pro-v2-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+ 
+body {
+    font-family: 'Tai Heritage Pro','Special Elite','Dancing Script', sans-serif,;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.7;
+ 
+}
+
+.handWriting {
+    font-family: 'Dancing Script', normal;
+    font-weight: 400;
+    font-size: 2.5rem; 
+    line-height: 1.7;
+}
+
+.standardFont {
+    font-family: 'Tai Heritage Pro';
+    font-weight: 700;
+    /* font-size: 16px; */
+    line-height: 1.7;
+}
+.specialFont {
+    font-family: 'Special Elite';
+    font-weight: 400;
+    /* font-size: 16px; */
+    line-height: 1.7;
+}

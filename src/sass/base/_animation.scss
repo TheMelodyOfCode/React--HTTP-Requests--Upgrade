@@ -1,0 +1,38 @@
+
+@keyframes moveInBottom-1 {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0rem);
+    }
+}
+
+@keyframes changeColor {
+
+    0% {
+        background-image: linear-gradient(to right, $color-primary-1, $color-red-1);
+        /* This will clip the background to exactely where the text is */
+        background-clip: text;
+        color: transparent;
+    }
+    40% {
+        background-image: linear-gradient(to right, $color-red-1, $color-primary-1);
+        background-clip: text;
+        color: transparent;
+    }
+    80% {
+        background-image: linear-gradient(to right, $color-primary-1, $color-red-1);
+        background-clip: text;
+        color: transparent;
+    }
+    100% {
+        opacity: 1;
+        background-image: linear-gradient(to right, $color-red-1, $color-primary-1);
+        background-clip: text;
+        color: transparent;
+    }
+
+}

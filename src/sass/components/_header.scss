@@ -1,0 +1,55 @@
+.header {
+
+    display: grid;
+    grid-column: 1 / 7;
+    grid-row: 2  / 3;
+    grid-template-columns: repeat(4, minmax(max-content, 1fr));
+    grid-template-rows: repeat(1, minmax( max-content, 1fr)) repeat(3, minmax( min-content, min-content));
+    justify-content: center;
+    justify-items: center;
+    row-gap: .6rem;
+
+    &__heading-1 {
+        grid-row: 1  / 2;
+        grid-column: 1 / -1;
+        font-size: 7rem;
+        text-align: center;
+        animation: changeColor 6s ease-in-out 2s infinite ;
+        animation-fill-mode: backwards;
+        z-index: 1;
+        @include respond(w1100) {
+            font-size: 5rem;
+            }
+    }
+
+    &__heading-2 {
+        grid-row: 2 / 3 ;
+        grid-column: 2 / 4;
+        font-size: 4rem;
+        color: $color-white;
+        font-family: $special-font-1;
+        transform: translateY(-2rem);
+        z-index: 20;
+        animation: moveInBottom-1 2s linear ;
+        animation-fill-mode: backwards;
+        @include respond(w1100) {
+            font-size: 3rem;
+            transform: translateY(-1rem);
+            }
+        @include respond(phone) {
+            font-size: 2rem;
+            }
+    }
+    &__checkbox {
+        grid-row: 3 / 4 ;
+        grid-column: 2 / 4;
+    }
+
+    &__checkboxTitle {
+        grid-row: 4 / 5 ;
+        grid-column: 2 / 4;
+        font-size: 1.5rem;
+        color: $color-white;
+    }
+
+}

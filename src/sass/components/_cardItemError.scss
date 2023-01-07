@@ -1,0 +1,71 @@
+.cardItemError {
+    display: grid;
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+    grid-template-columns: repeat(auto-fit, minmax(max-content, 1fr));
+    // grid-gap: 1rem;
+
+    height: 44rem;
+    width: 33rem;
+
+    @include respond(phone-bg) {
+        grid-row: 4 / 5;
+        grid-column: 2 / 4;
+        justify-self: center;
+        } 
+
+    &__card {
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        background-color: $color-secondary-bg;
+        padding: 1.8rem;
+        border-radius: 2%;
+
+        &__img {
+            width: 100%;
+            grid-row: 1 / 2;
+            grid-column: 1 / -1;
+            z-index: 1;  
+
+            &:hover {
+                transform: scale(1.1);
+                transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+              } 
+        }
+
+        &__title {
+            grid-column: 1 / -1;
+            font-size: 2.5rem;
+            text-align: center;
+            color: $color-primary-1;
+            font-family: $special-font-1;
+            cursor: pointer;
+        }
+        &__text {
+            grid-column: 1 / -1;
+            font-size: 1.8rem;
+            color: $color-grey-light-2;
+            @include respond(phone-bg) {
+                font-size: 1.5rem;
+                } 
+        }
+    }
+    &__errorBtn {
+        border: none;
+        background-color: $color-red-1;
+        width: 30rem;
+        font-size: 4.5rem;
+        color: $color-white;
+        justify-self: center;
+        cursor: pointer;
+        &:hover,
+        &:active {
+            transform: translateY(-3px);
+        }
+        @include respond(phone-bg) {
+            font-size: 3.5rem;
+            } 
+    }
+
+}
