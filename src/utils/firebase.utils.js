@@ -45,9 +45,6 @@ export const getSingleDocfromDB = async ( cardName) =>{
     } else {
       // doc.data() will be undefined in this case
       const error = {error: 'error', status: 'rejected', message: `No Trading-Card with the name "${cardName}"` }
-      // const error = {error: 'error', status: 'rejected', message: new Error(`No Trading-Card with the name "${cardName}"`) }
-      // const error = 'error'
-      // const error = new Error(`No Trading-Card with the name "${cardName}"`)
       return error
     }
 }

@@ -1,13 +1,18 @@
 import * as React from 'react'
 
-import Header from "../components/header/header.component";
 import CardItem from "../components/cardItem/cardItem.component";
 import { getSingleDocfromDB } from '../utils/firebase.utils';
 import {ErrorBoundary} from 'react-error-boundary'
 import CardNamesButtons from '../components/cardNamesButtons/cardNamesButtons.component';
 import PreviousCards from '../components/previousCards/previousCards.component';
 
+
+
 const Home = ()=>{
+
+    const [cardItems, setCardItems] =  React.useState({})
+    const [nameByButton, setnameByButton] = React.useState('')
+    const [nameByInputField, setnameByInputField] = React.useState('')
 
     const [stateOfRequest, setStateOfRequest] = React.useState({
         status: 'idle',
@@ -15,10 +20,6 @@ const Home = ()=>{
         message: '',
       })
     
-    const [cardItems, setCardItems] =  React.useState({})
-    const [nameByButton, setnameByButton] = React.useState('')
-    const [nameByInputField, setnameByInputField] = React.useState('')
-
     const { message} = stateOfRequest
     
         React.useEffect(()=>{ 
@@ -26,10 +27,9 @@ const Home = ()=>{
                 return
             }
             setnameByButton('')
-            setStateOfRequest({status: 'pending', error: null})
+            setStateOfRequest({status: 'pending'})
             const getCardItem = async ()=> {
                 if (typeof nameByButton === 'string') {
-                    // console.log(cardItemByName)
                     const cardItem = await getSingleDocfromDB(nameByButton)
                         setCardItems(cardItem)
                         setStateOfRequest({status: 'resolved'})
@@ -58,7 +58,7 @@ const Home = ()=>{
         }
         resetnameByButton()
         setnameByInputField('')
-        setStateOfRequest({status: 'pending', error: null})
+        setStateOfRequest({status: 'pending'})
         const getCardByInput = async ()=> {
             if (typeof nameByInputField === 'string') {
                 const cardItem = await getSingleDocfromDB(nameByInputField)
@@ -104,8 +104,8 @@ const Home = ()=>{
     }
 
     return (
-        <main className="container">
-            <Header />
+
+        <>
             
             <form onSubmit={handleSubmit} className="form">
                 <input 
@@ -119,13 +119,14 @@ const Home = ()=>{
                 <button className="form__btn btn" type="submit" disabled={!nameByInputField.length} >Submit</button>
             </form>
 
-            <CardNamesButtons handleSelect={handleSelect} />
             <ErrorBoundary  FallbackComponent={ErrorFallback} onReset={handleReset} resetKeys={[nameByButton,nameByInputField]} >
+                <CardNamesButtons handleSelect={handleSelect} />
                 <CardItem  stateOfRequest={stateOfRequest} cardItems={cardItems} />
                 <PreviousCards />
             </ErrorBoundary>
             
-        </main> 
+        </>
+
     )
 
 }

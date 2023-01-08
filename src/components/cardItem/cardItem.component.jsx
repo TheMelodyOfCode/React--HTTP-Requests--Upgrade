@@ -2,9 +2,11 @@
 import * as React from 'react'
 import CardItemFallback from '../cardItemFallback/cardItemFallback';
 
+
 const CardItem = ({stateOfRequest, cardItems}  )=>{
 
     const { quote, name ,imageUrl, } = cardItems;
+
     const { status, error} = stateOfRequest
 
     if (status === 'idle'){   
