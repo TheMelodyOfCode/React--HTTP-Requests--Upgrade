@@ -1,0 +1,75 @@
+.cardNames {
+    display: grid;
+    grid-column: 2 / 4;
+    grid-row: 4 / 5;
+    grid-template-columns: min-content;
+    grid-template-rows: max-content max-content;
+    justify-self: center;
+
+        &__form {
+
+
+            &__box {
+                display: grid;
+                grid-row: 1 / 2;
+                justify-content: center;
+                justify-self: center;
+
+                &__input {
+                    grid-row: 1 /2;
+                    font-size: 1.5rem;
+                    font-family: inherit;
+                    color: $color-black;
+                    padding: .5rem 1rem;
+                    border-radius: $border-radius-small;
+                    background-color: rgba($color-grey-light-1, .8);
+                    border: none;
+                    border-bottom: 3px solid transparent;
+                    display: block;
+                    transition: all .3s;
+                    height: 60%;
+                    width: 60%;
+            
+                    &:focus {
+                        outline: none;
+                        box-shadow: $shadow-black-light;
+                        border-bottom: 3px solid $color-black;
+                    } 
+                }
+                &__btn {
+                    grid-row: 1 /2;
+                    height: 50%;
+                    width: 10rem;
+                }
+            }      
+        }
+
+        &__container {
+            display: grid;
+            grid-row: 2/ 3;
+            grid-template-columns: repeat(6, minmax(min-content, max-content));
+            grid-template-rows: min-content ;
+
+            @include respond(phone) {
+                grid-template-columns: repeat(3, minmax(min-content, max-content));
+                grid-template-rows: min-content min-content;
+                } 
+
+            &__btn {
+                border: none;
+                background-color: transparent;
+                font-size: 2.5rem;
+                color: $color-primary-1;
+                font-family: $handwriting-font-1;
+                justify-self: center;
+                cursor: pointer;
+                margin-right: 1rem;
+                &:hover,
+                &:active {
+                    transform: translateY(-3px);
+                }
+            }
+        }
+
+    }
+

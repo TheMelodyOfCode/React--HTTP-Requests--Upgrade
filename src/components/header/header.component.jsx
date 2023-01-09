@@ -12,7 +12,7 @@ const Header = ({mountApp, setMountApp})=>{
                 : 
                 <>
                 <h1 className="header__heading-1">Ooooops</h1> 
-                <h2 className="header__heading-2">Check the box again</h2> 
+                <h2 className="header__heading-2">Check the box again !</h2> 
                 </>
                 }  
                 <input 

@@ -3,15 +3,12 @@ import * as React from 'react'
 import CardItem from "../components/cardItem/cardItem.component";
 import { getSingleDocfromDB } from '../utils/firebase.utils';
 import {ErrorBoundary} from 'react-error-boundary'
-import CardNamesButtons from '../components/cardNamesButtons/cardNamesButtons.component';
-import PreviousCards from '../components/previousCards/previousCards.component';
-
+// import PreviousCards from '../components/previousCards/previousCards.component';
 
 
 const Home = ()=>{
 
-    const [cardItems, setCardItems] =  React.useState({})
-    const [nameByButton, setnameByButton] = React.useState('')
+    const [cardItem, setCardItem] =  React.useState({})
     const [nameByInputField, setnameByInputField] = React.useState('')
 
     const [stateOfRequest, setStateOfRequest] = React.useState({
@@ -20,54 +17,27 @@ const Home = ()=>{
         message: '',
       })
     
-    const { message} = stateOfRequest
+    const {message} = stateOfRequest
     
-        React.useEffect(()=>{ 
-            if (!nameByButton) {
-                return
-            }
-            setnameByButton('')
-            setStateOfRequest({status: 'pending'})
-            const getCardItem = async ()=> {
-                if (typeof nameByButton === 'string') {
-                    const cardItem = await getSingleDocfromDB(nameByButton)
-                        setCardItems(cardItem)
-                        setStateOfRequest({status: 'resolved'})
-                  }
-            };
-            getCardItem()
-
-    }, [nameByButton]);
-
-
-    const resetnameByButton = ()=>{
-        setnameByButton('')
-    }
 
     const  handleChange = async (e) => {
-        resetnameByButton()
         setnameByInputField(e.target.value.toLowerCase() )  
       }
-
-
 
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!nameByInputField) {
             return
         }
-        resetnameByButton()
         setnameByInputField('')
         setStateOfRequest({status: 'pending'})
         const getCardByInput = async ()=> {
             if (typeof nameByInputField === 'string') {
                 const cardItem = await getSingleDocfromDB(nameByInputField)
-                console.log(cardItem)
                 if (cardItem.error === 'error') {
-                    setStateOfRequest({error: 'error', status: 'rejected', message: cardItem.message})
-                    
+                    setStateOfRequest({error: 'error', status: 'rejected', message: cardItem.message})    
                 } else {
-                    setCardItems(cardItem)
+                    setCardItem(cardItem)
                     setStateOfRequest({status: 'resolved'})
                 }
 
@@ -77,8 +47,16 @@ const Home = ()=>{
       }
 
     const  handleSelect = async (newCardName) => {
-        setnameByButton(newCardName)    
+        setnameByInputField(newCardName)  
+        handleSubmit(newCardName)
       }
+
+    function handleReset(){
+        setnameByInputField('')
+        setStateOfRequest({error: null, status: 'idle'})
+        setCardItem({})
+    }
+
 
       function ErrorFallback({error, resetErrorBoundary,}) {
         return (
@@ -96,35 +74,78 @@ const Home = ()=>{
         )
     }
 
-    function handleReset(){
-        setnameByButton('')
-        setnameByInputField('')
-        setCardItems({})
-        setStateOfRequest({error: null, status: 'idle'})
-    }
-
     return (
 
         <>
-            
-            <form onSubmit={handleSubmit} className="form">
-                <input 
+    <ErrorBoundary  FallbackComponent={ErrorFallback} onReset={handleReset} resetKeys={[nameByInputField]} >
+    <section  className="cardNames">
+
+        <form onSubmit={handleSubmit} className="cardNames__form">
+            <div className="cardNames__form__box">
+            <input 
                 type="text" 
-                className="form__input" 
+                className="cardNames__form__box__input" 
                 placeholder="type: rick" 
                 name="nameByInputField" 
                 value={nameByInputField}
                 onChange={handleChange}
                 />
-                <button className="form__btn btn" type="submit" disabled={!nameByInputField.length} >Submit</button>
-            </form>
+                <button className="cardNames__form__box__btn btn" type="submit" disabled={!nameByInputField.length} >Submit</button>
+            </div>
+            <div class="cardNames__container">
+                <button
+                className="cardNames__container__btn"
+                type="button"
+                onClick={() => handleSelect('rick')}
+                >Rick</button>
+                {' '}
+                <button
+                className="cardNames__container__btn"
+                type="button"
+                onClick={() => handleSelect('morty')}
+                >Morty</button>
+                {' '}
+                <button
+                className="cardNames__container__btn"
+                type="button"
+                onClick={() => handleSelect('snuggles')}
+                >Snuggles</button>
+                {' '}
+                <button
+                className="cardNames__container__btn"
+                type="button"
+                onClick={() => handleSelect('lucius')}
+                >Lucius</button>
+                {' '}
+                <button
+                className="cardNames__container__btn"
+                type="button"
+                onClick={() => handleSelect('squanchy')}
+                >Squanchy</button>
+                {' '}
+                <button
+                className="cardNames__container__btn"
+                type="button"
+                onClick={() => handleSelect('jerry')}
+                >Jerry</button>
+                {' '}
+            </div>
+        </form>
+    </section>
 
-            <ErrorBoundary  FallbackComponent={ErrorFallback} onReset={handleReset} resetKeys={[nameByButton,nameByInputField]} >
-                <CardNamesButtons handleSelect={handleSelect} />
-                <CardItem  stateOfRequest={stateOfRequest} cardItems={cardItems} />
-                <PreviousCards />
-            </ErrorBoundary>
-            
+                <CardItem  stateOfRequest={stateOfRequest} cardItem={cardItem} />
+                {/* <PreviousCards /> */}
+        <section className="previousCard">
+            <div>
+                <h6 className="previousCard__title">Previous Selection</h6> 
+                <ul className="previousCard__uoList">
+                    <li className="previousCard__uoList--Item">
+                        <button className="previousCard__btn btn">CardName</button>
+                    </li>
+                </ul>
+            </div>
+        </section>
+            </ErrorBoundary>  
         </>
 
     )

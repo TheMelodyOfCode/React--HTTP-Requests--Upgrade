@@ -3,10 +3,9 @@ import * as React from 'react'
 import CardItemFallback from '../cardItemFallback/cardItemFallback';
 
 
-const CardItem = ({stateOfRequest, cardItems}  )=>{
+const CardItem = ({stateOfRequest, cardItem}  )=>{
 
-    const { quote, name ,imageUrl, } = cardItems;
-
+    const { quote, name ,imageUrl, } = cardItem;
     const { status, error} = stateOfRequest
 
     if (status === 'idle'){   
