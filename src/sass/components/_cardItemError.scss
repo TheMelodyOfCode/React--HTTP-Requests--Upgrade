@@ -19,6 +19,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         background-color: $color-secondary-bg;
+        background-color: $color-white;
         padding: 1.8rem;
         border-radius: 2%;
 
@@ -42,15 +43,17 @@
             font-family: $special-font-1;
             cursor: pointer;
         }
+
         &__text {
             grid-column: 1 / -1;
-            font-size: 1.8rem;
-            color: $color-grey-light-2;
+            font-size: 1.5rem;
+            color: $color-black;
             @include respond(phone-bg) {
                 font-size: 1.5rem;
                 } 
         }
     }
+
     &__errorBtn {
         border: none;
         background-color: $color-red-1;

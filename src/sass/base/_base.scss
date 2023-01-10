@@ -27,7 +27,7 @@ body {
     display: grid;
     grid-column: 4 / 9;
     grid-template-columns: minmax(1rem, 1fr) minmax(28rem, 1fr)  minmax(33rem, 1fr) minmax(1rem, 1fr);
-    grid-template-rows: 4rem repeat(3, minmax(max-content, max-content)) minmax(min-content, 1fr) 4rem;
+    grid-template-rows: repeat(3, minmax(max-content, max-content)) minmax(min-content, 1fr) 4rem;
     row-gap: 2rem;
     justify-content: center;
     justify-self: center;
