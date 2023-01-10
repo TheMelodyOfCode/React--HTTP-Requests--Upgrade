@@ -5,6 +5,7 @@ import {getSingleDocfromDB } from '../utils/firebase.utils';
 import {ErrorBoundary} from 'react-error-boundary'
 import PreviousCardName from '../components/previousCardName/previousCardName.component'
 import { CardNameCacheProvider } from '../context/cardNameCache.context';
+import Form from '../form/form.component';
 // const CardNameCacheContext = React.createContext()
 
 // function cardNameCacheReducer(state, action) {
@@ -129,7 +130,6 @@ const Home = ()=>{
     }
 
 
-
     function ErrorFallback({error, resetErrorBoundary,}) {
       return (
           <section  className="cardItemError">
@@ -141,7 +141,7 @@ const Home = ()=>{
                       {error.message}
                       {message}
                   </p> 
-                  <button className="cardItemError__errorBtn" onClick={resetErrorBoundary}>Try again</button> 
+                  <button className="cardItemError__errorBtn" onClick={resetErrorBoundary}>fix Error & Try again</button> 
               </div>
           </section>
       )
@@ -150,63 +150,11 @@ const Home = ()=>{
     return (
         <>
         <ErrorBoundary  FallbackComponent={ErrorFallback} onReset={handleReset} resetKeys={[nameByInputField]} >
-        <section  className="cardNames">
-            <form onSubmit={handleSubmit} className="cardNames__form">
-                <div className="cardNames__form__box">
-                <input 
-                    type="text" 
-                    className="cardNames__form__box__input" 
-                    placeholder="type: rick" 
-                    name="nameByInputField" 
-                    value={nameByInputField}
-                    onChange={handleChange}
-                    />
-                    <button className="cardNames__form__box__btn btn" type="submit" disabled={!nameByInputField.length} >Submit</button>
-                </div>
-                <div class="cardNames__container">
-                    <button
-                    className="cardNames__container__btn"
-                    type="button"
-                    onClick={() => handleSelect('rick')}
-                    >Rick</button>
-                    {' '}
-                    <button
-                    className="cardNames__container__btn"
-                    type="button"
-                    onClick={() => handleSelect('morty')}
-                    >Morty</button>
-                    {' '}
-                    <button
-                    className="cardNames__container__btn"
-                    type="button"
-                    onClick={() => handleSelect('snuggles')}
-                    >Snuggles</button>
-                    {' '}
-                    <button
-                    className="cardNames__container__btn"
-                    type="button"
-                    onClick={() => handleSelect('lucius')}
-                    >Lucius</button>
-                    {' '}
-                    <button
-                    className="cardNames__container__btn"
-                    type="button"
-                    onClick={() => handleSelect('squanchy')}
-                    >Squanchy</button>
-                    {' '}
-                    <button
-                    className="cardNames__container__btn"
-                    type="button"
-                    onClick={() => handleSelect('jerry')}
-                    >Jerry</button>
-                    {' '}
-                </div>
-            </form>
-        </section>
-        <CardNameCacheProvider>
-            <CardItem  stateOfRequest={stateOfRequest} cardItem={cardItem} />
-            <PreviousCardName onSelect={handleSelect} cardItem={cardItem}  />
-        </CardNameCacheProvider>
+              <Form handleSubmit={handleSubmit} handleChange={handleChange} handleSelect={handleSelect} nameByInputField={nameByInputField}  />
+          <CardNameCacheProvider>
+              <CardItem  stateOfRequest={stateOfRequest} cardItem={cardItem} />
+              <PreviousCardName onSelect={handleSelect} cardItem={cardItem}  />
+          </CardNameCacheProvider>
       </ErrorBoundary>  
         </>
 
