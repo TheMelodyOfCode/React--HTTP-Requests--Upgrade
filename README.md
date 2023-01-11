@@ -3,10 +3,15 @@
 
 #### 
 > This is an upgrade to my previous project React-HTTP-Requests</br>
-> It extends the exercise with the following :</br>
->> useRef</br>
->> useReducer vs. useState</br>
->> useCallback</br>
+> **general functionality:**
+>> recieving a trading-Card when entering the name in the formfield or clicking the button  
+>> showing a list of previous chosen trading-cards  
+>> mounting/unmounting the app when un/-checking the checkbox
+
+> This exercise was to work with :</br>
+>> useState</br>
+>> useEffect</br>
+>> useReducer</br>
 >> useContext</br>
 
 #### useState vs. useReducer
