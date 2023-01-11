@@ -3,6 +3,8 @@
 
 #### 
 > This is an upgrade to my previous project React-HTTP-Requests</br>
+> I'll definitly come back to this exercise in the future and implement useCallback and change the useReducer  
+> but for now that's it ....
 > **general functionality:**
 >> recieving a trading-Card when entering the name in the formfield or clicking the button  
 >> showing a list of previous chosen trading-cards  
