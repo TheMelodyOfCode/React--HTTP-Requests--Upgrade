@@ -7,8 +7,8 @@
 > but for now that's it ....  
   
 > **general functionality:**
->> recieving a trading-Card when entering the name in the formfield or clicking the button  
->> showing a list of previous chosen trading-cards  
+>> recieve a trading-Card after you enter the name in the form field or click the button  
+>> show a list of previous choosen trading-cards.
 >> mounting/unmounting the app when un/-checking the checkbox
 
 > This exercise was to work with :</br>
