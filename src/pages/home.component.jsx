@@ -6,6 +6,7 @@ import {ErrorBoundary} from 'react-error-boundary'
 import PreviousCardName from '../components/previousCardName/previousCardName.component'
 import { CardNameCacheProvider } from '../context/cardNameCache.context';
 import Form from '../form/form.component';
+
 // const CardNameCacheContext = React.createContext()
 
 // function cardNameCacheReducer(state, action) {
@@ -93,6 +94,7 @@ const Home = ()=>{
     
 
     const  handleChange = async (e) => {
+        e.preventDefault()
         setnameByInputField(e.target.value.toLowerCase() )  
       }
 
@@ -141,7 +143,7 @@ const Home = ()=>{
                       {error.message}
                       {message}
                   </p> 
-                  <button className="cardItemError__errorBtn" onClick={resetErrorBoundary}>fix Error & Try again</button> 
+                  <button className="cardItemError__errorBtn" onClick={resetErrorBoundary}>Try again</button> 
               </div>
           </section>
       )
@@ -155,7 +157,7 @@ const Home = ()=>{
               <CardItem  stateOfRequest={stateOfRequest} cardItem={cardItem} />
               <PreviousCardName onSelect={handleSelect} cardItem={cardItem}  />
           </CardNameCacheProvider>
-      </ErrorBoundary>  
+        </ErrorBoundary>  
         </>
 
     )

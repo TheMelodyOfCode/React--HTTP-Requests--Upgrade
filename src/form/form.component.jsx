@@ -2,6 +2,7 @@
 
 const Form = ({handleSubmit,handleChange, handleSelect, nameByInputField})=>{
 
+
     return (
         <section  className="cardNames">
         <form onSubmit={handleSubmit} className="cardNames__form">
